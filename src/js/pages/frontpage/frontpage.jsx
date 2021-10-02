@@ -1,12 +1,11 @@
 import React from "react";
-import Button from "components/button/button";
-import Image from "assets/images/image.png";
+import {Link} from "react-router-dom";
 import "./frontpage.scss";
 
 const Frontpage = () => {
   return (
     <>
-      <Button label="Start" onClick={() => alert("Welcome!")} />
+      <Link to="/questions">START</Link>
     </>
   );
 };
