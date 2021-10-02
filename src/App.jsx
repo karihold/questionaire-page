@@ -9,6 +9,8 @@ import Footer from 'landmarks/footer/footer';
 import Frontpage from 'pages/frontpage/frontpage';
 import Questions from 'pages/questions/questions';
 import Result from 'pages/result/result';
+//Routes
+import Routes from 'routes/routes';
 //Styles
 import 'scss/base.scss';
 
@@ -17,13 +19,13 @@ const App = () => {
     <Router>
       <Header />
       <Switch>
-        <Route exact path="/">
+        <Route exact path={Routes.Home}>
           <Frontpage />
         </Route>
-        <Route path="/questions/:step">
+        <Route path={`${Routes.Questions}/:step`}>
           <Questions />
         </Route>
-        <Route path="/result">
+        <Route path={Routes.Result}>
           <Result />
         </Route>
       </Switch>
