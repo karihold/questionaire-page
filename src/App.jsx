@@ -1,9 +1,14 @@
+//React
 import React from "react";
 import { render } from "react-dom";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Frontpage from "pages/frontpage/frontpage";
+//Landmarks
 import Header from "landmarks/header/header";
 import Footer from "landmarks/footer/footer";
+//Pages
+import Frontpage from "pages/frontpage/frontpage";
+import Questions from 'pages/questions/questions';
+//Styles
 import "scss/base.scss";
 
 const App = () => {
@@ -13,6 +18,9 @@ const App = () => {
       <Switch>
         <Route exact path="/">
           <Frontpage />
+        </Route>
+        <Route path="/questions">
+          <Questions/>
         </Route>
       </Switch>
       <Footer />
