@@ -22,7 +22,7 @@ const App = () => {
         <Route exact path={Routes.Home}>
           <Frontpage />
         </Route>
-        <Route path={`${Routes.Questions}/:step`}>
+        <Route path={`${Routes.Questions.Root}/:step`}>
           <Questions />
         </Route>
         <Route path={Routes.Result}>
