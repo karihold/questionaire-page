@@ -8,6 +8,7 @@ import Footer from "landmarks/footer/footer";
 //Pages
 import Frontpage from "pages/frontpage/frontpage";
 import Questions from 'pages/questions/questions';
+import Result from 'pages/result/result';
 //Styles
 import "scss/base.scss";
 
@@ -21,6 +22,9 @@ const App = () => {
         </Route>
         <Route path="/questions">
           <Questions/>
+        </Route>
+        <Route path="/result">
+          <Result/>
         </Route>
       </Switch>
       <Footer />
