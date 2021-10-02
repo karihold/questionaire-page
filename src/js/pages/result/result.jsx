@@ -1,5 +1,5 @@
-import React from "react";
-import "./result.scss";
+import React from 'react';
+import './result.scss';
 
 const Result = () => {
   return (
