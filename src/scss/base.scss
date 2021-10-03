@@ -47,7 +47,7 @@ button {
   transition: 0.2s ease-in-out;
 
   &:focus {
-    @include set-focus-outline($dark-blue, 2px);
+    @include set-focus-outline($dark-blue);
   }
 
   &:disabled {
