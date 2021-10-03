@@ -18,7 +18,8 @@ module.exports = (env) => ({
   resolve: {
     alias: {
       components: path.resolve(srcPath, 'js/components'),
-
+      context: path.resolve(srcPath, 'js/context'),
+      constants: path.resolve(srcPath, 'js/constants'),
       pages: path.resolve(srcPath, 'js/pages'),
       landmarks: path.resolve(srcPath, 'js/landmarks'),
       routes: path.resolve(srcPath, 'js/routes'),
