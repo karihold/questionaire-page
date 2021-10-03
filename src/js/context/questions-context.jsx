@@ -1,11 +1,11 @@
 import React, { useContext, createContext, useState } from 'react';
-import QuestionNames from 'constants/question-names';
+import Question from 'constants/question-names';
 
 const defaultAnswers = {
-  [QuestionNames.Name]: '',
-  [QuestionNames.FavoriteColor]: '',
-  [QuestionNames.ColorReason]: '',
-  [QuestionNames.ColorLoveScale]: 0,
+  [Question.Name]: '',
+  [Question.FavoriteColor]: '',
+  [Question.ColorReason]: '',
+  [Question.ColorLoveScale]: 0,
 };
 
 const QuestionsContext = createContext({});

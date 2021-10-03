@@ -2,7 +2,7 @@ import React from 'react';
 import { useRouteMatch, useHistory, Link } from 'react-router-dom';
 import Routes from 'routes/routes';
 import { useQuestionsContext } from 'context/questions-context';
-import QuestionNames from 'constants/question-names';
+import Question from 'constants/question-names';
 import Button from 'components/button/button';
 import './questions.scss';
 
@@ -37,14 +37,14 @@ const Questions = () => {
             What's your name?
             <input
               type="text"
-              onChange={(event) => setQuestionAnswer({ question: QuestionNames.Name, answer: event.target.value })}
+              onChange={(event) => setQuestionAnswer({ question: Question.Name, answer: event.target.value })}
               onKeyDown={onAnswerEnteryKey}
             />
           </label>
           <Button
             label="Next"
             onClick={() => history.push(Routes.Questions.FavoriteColor)}
-            isDisabled={!answers[QuestionNames.Name]}
+            isDisabled={!answers[Question.Name]}
           />
         </div>
       )}
@@ -53,9 +53,7 @@ const Questions = () => {
           <label className="question-label">
             What's your favourite color?
             <select
-              onChange={(event) =>
-                setQuestionAnswer({ question: QuestionNames.FavoriteColor, answer: event.target.value })
-              }
+              onChange={(event) => setQuestionAnswer({ question: Question.FavoriteColor, answer: event.target.value })}
               onKeyDown={onAnswerEnteryKey}
             >
               <option>Pick a color</option>
@@ -72,16 +70,14 @@ const Questions = () => {
           <Button
             label="Next"
             onClick={() => history.push(Routes.Questions.ColorReason)}
-            isDisabled={
-              !answers[QuestionNames.FavoriteColor] || answers[QuestionNames.FavoriteColor] === 'Pick a color'
-            }
+            isDisabled={!answers[Question.FavoriteColor] || answers[Question.FavoriteColor] === 'Pick a color'}
           />
         </div>
       )}
       {isAtColorReasonStep && (
         <div className="question-wrapper">
           <label className="question-label">
-            Why is {answers[QuestionNames.FavoriteColor]} your favorite color?{' '}
+            Why is {answers[Question.FavoriteColor]} your favorite color?{' '}
             <textarea
               maxLength="250"
               rows={5}
@@ -90,7 +86,7 @@ const Questions = () => {
                 const isAnswerWhiteSpace = /^\s+$/gm.test(answer);
 
                 if (!isAnswerWhiteSpace) {
-                  setQuestionAnswer({ question: QuestionNames.ColorReason, answer: event.target.value });
+                  setQuestionAnswer({ question: Question.ColorReason, answer: event.target.value });
                 }
               }}
             />
@@ -98,21 +94,19 @@ const Questions = () => {
           <Button
             label="Next"
             onClick={() => history.push(Routes.Questions.ColorLoveScale)}
-            isDisabled={!answers[QuestionNames.ColorReason]}
+            isDisabled={!answers[Question.ColorReason]}
           />
         </div>
       )}
       {isAtColorLoveScaleStep && (
         <div className="question-wrapper">
           <label className="question-label">
-            How much do you love color {answers[QuestionNames.FavoriteColor]} from 1-100?
+            How much do you love color {answers[Question.FavoriteColor]} from 1-100?
             <input
               type="number"
               min="1"
               max="100"
-              onChange={(event) =>
-                setQuestionAnswer({ question: QuestionNames.ColorLoveScale, answer: event.target.value })
-              }
+              onChange={(event) => setQuestionAnswer({ question: Question.ColorLoveScale, answer: event.target.value })}
               onKeyDown={onAnswerEnteryKey}
             />
           </label>
@@ -120,9 +114,9 @@ const Questions = () => {
             label="Next"
             onClick={() => history.push(Routes.Result)}
             isDisabled={
-              !answers[QuestionNames.ColorLoveScale] ||
-              answers[QuestionNames.ColorLoveScale] > 100 ||
-              answers[QuestionNames.ColorLoveScale] < 1
+              !answers[Question.ColorLoveScale] ||
+              answers[Question.ColorLoveScale] > 100 ||
+              answers[Question.ColorLoveScale] < 1
             }
           />
         </div>
