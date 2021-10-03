@@ -3,7 +3,7 @@ import QuestionNames from 'constants/question-names';
 
 const defaultAnswers = {
   [QuestionNames.Name]: '',
-  [QuestionNames.FavoriteColors]: '',
+  [QuestionNames.FavoriteColor]: '',
   [QuestionNames.ColorReason]: '',
   [QuestionNames.ColorLoveScale]: 0,
 };
