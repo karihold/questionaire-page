@@ -15,8 +15,21 @@ const Questions = () => {
   const isAtColorReasonStep = useRouteMatch(Routes.Questions.ColorReason);
   const isAtColorLoveScaleStep = useRouteMatch(Routes.Questions.ColorLoveScale);
 
+  function onAnswerEnteryKey(event, stepUrl) {
+    if (event.key === 'Enter') {
+      const nextButton = event.target.parentElement.nextElementSibling;
+
+      if (!nextButton.disabled) nextButton.click();
+    }
+  }
+
   return (
-    <form>
+    <form
+      onKeyDown={(event) => {
+        console.dir(event.target);
+        if (event.key === 'Enter' && event.target.tagName !== 'BUTTON') event.preventDefault();
+      }}
+    >
       {isAtNameStep && (
         <>
           <label>
@@ -24,6 +37,7 @@ const Questions = () => {
             <input
               type="text"
               onChange={(event) => setQuestionAnswer({ question: QuestionNames.Name, answer: event.target.value })}
+              onKeyDown={onAnswerEnteryKey}
             />
           </label>
           <Button
@@ -41,6 +55,7 @@ const Questions = () => {
               onChange={(event) =>
                 setQuestionAnswer({ question: QuestionNames.FavoriteColor, answer: event.target.value })
               }
+              onKeyDown={onAnswerEnteryKey}
             >
               <option>Pick a color</option>
               <option>Dark green</option>
@@ -70,6 +85,7 @@ const Questions = () => {
               onChange={(event) =>
                 setQuestionAnswer({ question: QuestionNames.ColorReason, answer: event.target.value })
               }
+              onKeyDown={onAnswerEnteryKey}
             />
           </label>
           <Button
@@ -90,6 +106,7 @@ const Questions = () => {
               onChange={(event) =>
                 setQuestionAnswer({ question: QuestionNames.ColorLoveScale, answer: event.target.value })
               }
+              onKeyDown={onAnswerEnteryKey}
             />
           </label>
           <Button
