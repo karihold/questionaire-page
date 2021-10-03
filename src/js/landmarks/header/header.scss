@@ -1,0 +1,27 @@
+@import 'variables/colors.scss';
+@import 'variables/sizes.scss';
+@import 'mixins/focus.scss';
+
+header {
+  height: $header-height;
+  padding: 20px 40px;
+}
+
+.return-start-link {
+  display: inline-block;
+
+  font-size: 1.7rem;
+  text-decoration: none;
+  color: $black;
+
+  transition: 0.2s ease-in-out;
+  border-radius: 2px;
+
+  &:focus {
+    @include set-focus-outline;
+  }
+
+  &:hover {
+    opacity: 0.5;
+  }
+}

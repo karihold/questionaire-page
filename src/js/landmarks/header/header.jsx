@@ -1,10 +1,14 @@
-import React from "react";
-import "./header.scss";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Routes from 'routes/routes';
+import './header.scss';
 
 const Header = () => {
   return (
     <header>
-      <p>header</p>
+      <Link to={Routes.Home} className="return-start-link">
+        Return to start
+      </Link>
     </header>
   );
 };
