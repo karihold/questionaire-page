@@ -64,7 +64,14 @@ const Questions = () => {
       )}
       {isAtColorReasonStep && (
         <>
-          <label>Why is selected color your favorite color?</label>
+          <label>
+            Why is {answers[QuestionNames.FavoriteColor]} your favorite color?{' '}
+            <textarea
+              onChange={(event) =>
+                setQuestionAnswer({ question: QuestionNames.ColorReason, answer: event.target.value })
+              }
+            />
+          </label>
           <Button
             label="NEXT"
             onClick={() => history.push(Routes.Questions.ColorLoveScale)}
@@ -75,10 +82,15 @@ const Questions = () => {
       {isAtColorLoveScaleStep && (
         <>
           <label>
-            How much do you love color yellow from 1-100?
-            <Link className="next-step-link" to={Routes.Result}>
-              NEXT
-            </Link>
+            How much do you love color {answers[QuestionNames.FavoriteColor]} from 1-100?
+            <input
+              type="number"
+              min="1"
+              max="100"
+              onChange={(event) =>
+                setQuestionAnswer({ question: QuestionNames.ColorLoveScale, answer: event.target.value })
+              }
+            />
           </label>
           <Button
             label="NEXT"

@@ -11,6 +11,8 @@ const Result = () => {
       <h1>Result</h1>
       <p>{answers[QuestionNames.Name]}</p>
       <p>{answers[QuestionNames.FavoriteColor]}</p>
+      <p>{answers[QuestionNames.ColorReason]}</p>
+      <p>{answers[QuestionNames.ColorLoveScale]}</p>
     </>
   );
 };
