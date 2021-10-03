@@ -1,0 +1,6 @@
+@import 'variables/colors.scss';
+
+@mixin set-focus-outline($color: $orange, $size: 4px) {
+  outline: none;
+  box-shadow: 0 0 0 $size $color;
+}
