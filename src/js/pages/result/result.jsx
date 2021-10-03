@@ -10,6 +10,7 @@ const Result = () => {
     <>
       <h1>Result</h1>
       <p>{answers[QuestionNames.Name]}</p>
+      <p>{answers[QuestionNames.FavoriteColor]}</p>
     </>
   );
 };

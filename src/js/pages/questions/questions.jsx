@@ -1,50 +1,84 @@
 import React from 'react';
-import { Link, useRouteMatch, useParams } from 'react-router-dom';
+import { useRouteMatch, useHistory, Link } from 'react-router-dom';
 import Routes from 'routes/routes';
 import { useQuestionsContext } from 'context/questions-context';
-import questionNames from 'constants/question-names';
+import QuestionNames from 'constants/question-names';
+import Button from 'components/button/button';
 import './questions.scss';
 
 const Questions = () => {
-  const { step } = useParams();
+  const history = useHistory();
+  const { answers, setQuestionAnswer } = useQuestionsContext();
 
-  const { setQuestionAnswer } = useQuestionsContext();
   const isAtNameStep = useRouteMatch(Routes.Questions.Name);
   const isAtFavoriteColorStep = useRouteMatch(Routes.Questions.FavoriteColor);
   const isAtColorReasonStep = useRouteMatch(Routes.Questions.ColorReason);
   const isAtColorLoveScaleStep = useRouteMatch(Routes.Questions.ColorLoveScale);
 
   return (
-    <>
+    <form>
       {isAtNameStep && (
         <>
-          <h1>{step}</h1>
-          <input
-            type="text"
-            onChange={(event) => setQuestionAnswer({ question: questionNames.Name, answer: event.target.value })}
+          <label>
+            What's your name?
+            <input
+              type="text"
+              onChange={(event) => setQuestionAnswer({ question: QuestionNames.Name, answer: event.target.value })}
+            />
+          </label>
+          <Button
+            label="NEXT"
+            onClick={() => history.push(Routes.Questions.FavoriteColor)}
+            isDisabled={!answers[QuestionNames.Name]}
           />
-          <Link to={Routes.Questions.FavoriteColor}>NEXT</Link>
         </>
       )}
       {isAtFavoriteColorStep && (
         <>
-          <h1>{step}</h1>
-          <Link to={Routes.Questions.ColorReason}>NEXT</Link>
+          <label>
+            What's your favourite color?
+            <select
+              onChange={(event) =>
+                setQuestionAnswer({ question: QuestionNames.FavoriteColor, answer: event.target.value })
+              }
+            >
+              <option>Pick a color</option>
+              <option>Dark green</option>
+              <option>Electric blue</option>
+              <option>Salmon</option>
+              <option>Indian red</option>
+              <option>Green</option>
+              <option>Navy</option>
+              <option>Indigo</option>
+              <option>Turquoise</option>
+            </select>
+          </label>
+          <Button
+            label="NEXT"
+            onClick={() => history.push(Routes.Questions.ColorReason)}
+            isDisabled={
+              !answers[QuestionNames.FavoriteColor] || answers[QuestionNames.FavoriteColor] === 'Pick a color'
+            }
+          />
         </>
       )}
       {isAtColorReasonStep && (
-        <>
-          <h1>{step}</h1>
-          <Link to={Routes.Questions.ColorLoveScale}>NEXT</Link>
-        </>
+        <label>
+          Why is selected color your favorite color?
+          <Link className="next-step-link" to={Routes.Questions.ColorLoveScale}>
+            NEXT
+          </Link>
+        </label>
       )}
       {isAtColorLoveScaleStep && (
-        <>
-          <h1>{step}</h1>
-          <Link to={Routes.Result}>NEXT</Link>
-        </>
+        <label>
+          How much do you love color yellow from 1-100?
+          <Link className="next-step-link" to={Routes.Result}>
+            NEXT
+          </Link>
+        </label>
       )}
-    </>
+    </form>
   );
 };
 
