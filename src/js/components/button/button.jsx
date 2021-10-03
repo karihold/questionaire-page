@@ -1,9 +1,9 @@
-import React from "react";
-import "./button.scss";
+import React from 'react';
+import './button.scss';
 
-const Button = ({ onClick, label }) => {
+const Button = ({ onClick, label, isDisabled }) => {
   return (
-    <button type="button" onClick={onClick}>
+    <button type="button" onClick={onClick} disabled={isDisabled}>
       {label}
     </button>
   );
