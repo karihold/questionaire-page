@@ -1,0 +1,17 @@
+.result-answer-wrapper {
+  font-size: 1.7rem;
+
+  &:not(:last-child) {
+    margin-bottom: 24px;
+  }
+}
+
+.result-question {
+  font-weight: bold;
+  font-family: 'Raleway';
+  margin-bottom: 8px;
+}
+
+.result-answer {
+  font-size: 1.2rem;
+}
