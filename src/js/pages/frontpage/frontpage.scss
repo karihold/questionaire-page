@@ -1,0 +1,32 @@
+@import 'variables/colors.scss';
+@import 'mixins/focus.scss';
+
+.frontpage-link {
+  padding: 50px 26px;
+  display: block;
+
+  text-decoration: none;
+  color: $white;
+
+  font-size: 3.5rem;
+  background-color: $dark-blue;
+  text-align: center;
+  border: 1px solid $dark-blue;
+  border-radius: 2px;
+
+  width: 30%;
+
+  transition: 0.1s ease-in-out;
+
+  &:focus {
+    @include set-focus-outline;
+
+    transform: scale(0.95);
+    opacity: 0.9;
+  }
+
+  &:hover {
+    transform: scale(0.95);
+    opacity: 0.9;
+  }
+}

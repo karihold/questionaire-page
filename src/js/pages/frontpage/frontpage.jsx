@@ -6,7 +6,9 @@ import './frontpage.scss';
 const Frontpage = () => {
   return (
     <>
-      <Link to={Routes.Questions.Name}>START</Link>
+      <Link className="frontpage-link" to={Routes.Questions.Name}>
+        START
+      </Link>
     </>
   );
 };
