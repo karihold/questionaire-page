@@ -6,7 +6,6 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { QuestionsProvider } from 'context/questions-context';
 //Landmarks
 import Header from 'landmarks/header/header';
-import Footer from 'landmarks/footer/footer';
 //Pages
 import Frontpage from 'pages/frontpage/frontpage';
 import Questions from 'pages/questions/questions';
@@ -20,20 +19,21 @@ const App = () => {
   return (
     <Router>
       <Header />
-      <Switch>
-        <Route exact path={Routes.Home}>
-          <Frontpage />
-        </Route>
-        <QuestionsProvider>
-          <Route path={`${Routes.Questions.Root}/:step`}>
-            <Questions />
+      <main>
+        <Switch>
+          <Route exact path={Routes.Home}>
+            <Frontpage />
           </Route>
-          <Route path={Routes.Result}>
-            <Result />
-          </Route>
-        </QuestionsProvider>
-      </Switch>
-      <Footer />
+          <QuestionsProvider>
+            <Route path={`${Routes.Questions.Root}/:step`}>
+              <Questions />
+            </Route>
+            <Route path={Routes.Result}>
+              <Result />
+            </Route>
+          </QuestionsProvider>
+        </Switch>
+      </main>
     </Router>
   );
 };
