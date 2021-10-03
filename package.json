@@ -1,7 +1,7 @@
 {
-  "name": "webpack_setup",
+  "name": "color_quiz",
   "version": "1.0.0",
-  "description": "My custom webpack setup",
+  "description": "Color Quiz",
   "main": "index.js",
   "browserslist": [
     "last 2 versions",
