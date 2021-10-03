@@ -77,7 +77,7 @@ const Questions = () => {
       {isAtColorReasonStep && (
         <div className="question-wrapper">
           <label className="question-label">
-            Why is {answers[Question.FavoriteColor]} your favorite color?{' '}
+            Why is {answers[Question.FavoriteColor]} your favorite color?
             <textarea
               maxLength="250"
               rows={5}
