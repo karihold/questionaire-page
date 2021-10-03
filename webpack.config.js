@@ -11,6 +11,7 @@ module.exports = (env) => ({
   output: {
     path: distPath,
     filename: 'js/[name].js',
+    publicPath: '/',
   },
   mode: env.mode,
   target: 'web',
@@ -26,6 +27,7 @@ module.exports = (env) => ({
       scss: path.resolve(srcPath, 'scss/'),
       assets: path.resolve(srcPath, 'assets/'),
       variables: path.resolve(srcPath, 'scss/variables'),
+      mixins: path.resolve(srcPath, 'scss/mixins'),
     },
     extensions: ['.js', '.jsx'],
   },
