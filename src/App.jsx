@@ -2,6 +2,8 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+//Context
+import { QuestionsProvider } from 'context/questions-context';
 //Landmarks
 import Header from 'landmarks/header/header';
 import Footer from 'landmarks/footer/footer';
@@ -22,12 +24,14 @@ const App = () => {
         <Route exact path={Routes.Home}>
           <Frontpage />
         </Route>
-        <Route path={`${Routes.Questions.Root}/:step`}>
-          <Questions />
-        </Route>
-        <Route path={Routes.Result}>
-          <Result />
-        </Route>
+        <QuestionsProvider>
+          <Route path={`${Routes.Questions.Root}/:step`}>
+            <Questions />
+          </Route>
+          <Route path={Routes.Result}>
+            <Result />
+          </Route>
+        </QuestionsProvider>
       </Switch>
       <Footer />
     </Router>
