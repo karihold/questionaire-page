@@ -1,0 +1,17 @@
+@import 'variables/colors.scss';
+
+.results-wrapper {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+
+  background-color: $white;
+  border: 1px solid $dark-blue;
+  box-shadow: 5px 10px $dark-blue;
+  padding: 50px 70px;
+}
+
+.result-h1 {
+  margin-bottom: 35px;
+  font-size: 3rem;
+}
