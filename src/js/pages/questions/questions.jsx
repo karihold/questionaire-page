@@ -63,20 +63,29 @@ const Questions = () => {
         </>
       )}
       {isAtColorReasonStep && (
-        <label>
-          Why is selected color your favorite color?
-          <Link className="next-step-link" to={Routes.Questions.ColorLoveScale}>
-            NEXT
-          </Link>
-        </label>
+        <>
+          <label>Why is selected color your favorite color?</label>
+          <Button
+            label="NEXT"
+            onClick={() => history.push(Routes.Questions.ColorLoveScale)}
+            isDisabled={!answers[QuestionNames.ColorReason]}
+          />
+        </>
       )}
       {isAtColorLoveScaleStep && (
-        <label>
-          How much do you love color yellow from 1-100?
-          <Link className="next-step-link" to={Routes.Result}>
-            NEXT
-          </Link>
-        </label>
+        <>
+          <label>
+            How much do you love color yellow from 1-100?
+            <Link className="next-step-link" to={Routes.Result}>
+              NEXT
+            </Link>
+          </label>
+          <Button
+            label="NEXT"
+            onClick={() => history.push(Routes.Result)}
+            isDisabled={!answers[QuestionNames.ColorLoveScale]}
+          />
+        </>
       )}
     </form>
   );
