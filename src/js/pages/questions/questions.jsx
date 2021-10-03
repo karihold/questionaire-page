@@ -95,7 +95,11 @@ const Questions = () => {
           <Button
             label="NEXT"
             onClick={() => history.push(Routes.Result)}
-            isDisabled={!answers[QuestionNames.ColorLoveScale]}
+            isDisabled={
+              !answers[QuestionNames.ColorLoveScale] ||
+              answers[QuestionNames.ColorLoveScale] > 100 ||
+              answers[QuestionNames.ColorLoveScale] < 1
+            }
           />
         </>
       )}
