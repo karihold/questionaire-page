@@ -6,7 +6,11 @@ import './header.scss';
 const Header = () => {
   return (
     <header>
-      <Link to={Routes.Home} className="return-start-link">
+      <Link
+        to={Routes.Home}
+        className="return-start-link"
+        onClick={(event) => setTimeout(() => event.target.blur(), 800)}
+      >
         Return to start
       </Link>
     </header>
