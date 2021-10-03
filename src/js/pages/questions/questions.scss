@@ -1,0 +1,41 @@
+@import 'variables/colors.scss';
+
+form {
+  background-color: $white;
+  border: 1px solid $dark-blue;
+  box-shadow: 5px 10px $dark-blue;
+
+  padding: 50px 70px;
+}
+
+.question-wrapper {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.question-label {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  margin-bottom: 50px;
+
+  font-size: 3rem;
+  font-weight: 600;
+
+  > input,
+  > select,
+  > textarea {
+    margin-top: 30px;
+    font-size: 1.5rem;
+    width: 100%;
+    padding: 8px 10px;
+    border: none;
+    border-bottom: 1px solid $dark-blue;
+  }
+
+  > textarea {
+    padding: 20px;
+    resize: none;
+  }
+}

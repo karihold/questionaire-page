@@ -15,7 +15,7 @@ const Questions = () => {
   const isAtColorReasonStep = useRouteMatch(Routes.Questions.ColorReason);
   const isAtColorLoveScaleStep = useRouteMatch(Routes.Questions.ColorLoveScale);
 
-  function onAnswerEnteryKey(event, stepUrl) {
+  function onAnswerEnteryKey(event) {
     if (event.key === 'Enter') {
       const nextButton = event.target.parentElement.nextElementSibling;
 
@@ -27,12 +27,13 @@ const Questions = () => {
     <form
       onKeyDown={(event) => {
         console.dir(event.target);
-        if (event.key === 'Enter' && event.target.tagName !== 'BUTTON') event.preventDefault();
+        if (event.key === 'Enter' && event.target.tagName !== 'BUTTON' && event.target.tagName !== 'TEXTAREA')
+          event.preventDefault();
       }}
     >
       {isAtNameStep && (
-        <>
-          <label>
+        <div className="question-wrapper">
+          <label className="question-label">
             What's your name?
             <input
               type="text"
@@ -41,15 +42,15 @@ const Questions = () => {
             />
           </label>
           <Button
-            label="NEXT"
+            label="Next"
             onClick={() => history.push(Routes.Questions.FavoriteColor)}
             isDisabled={!answers[QuestionNames.Name]}
           />
-        </>
+        </div>
       )}
       {isAtFavoriteColorStep && (
-        <>
-          <label>
+        <div className="question-wrapper">
+          <label className="question-label">
             What's your favourite color?
             <select
               onChange={(event) =>
@@ -69,35 +70,41 @@ const Questions = () => {
             </select>
           </label>
           <Button
-            label="NEXT"
+            label="Next"
             onClick={() => history.push(Routes.Questions.ColorReason)}
             isDisabled={
               !answers[QuestionNames.FavoriteColor] || answers[QuestionNames.FavoriteColor] === 'Pick a color'
             }
           />
-        </>
+        </div>
       )}
       {isAtColorReasonStep && (
-        <>
-          <label>
+        <div className="question-wrapper">
+          <label className="question-label">
             Why is {answers[QuestionNames.FavoriteColor]} your favorite color?{' '}
             <textarea
-              onChange={(event) =>
-                setQuestionAnswer({ question: QuestionNames.ColorReason, answer: event.target.value })
-              }
-              onKeyDown={onAnswerEnteryKey}
+              maxLength="250"
+              rows={5}
+              onChange={(event) => {
+                const answer = event.target.value;
+                const isAnswerWhiteSpace = /^\s+$/gm.test(answer);
+
+                if (!isAnswerWhiteSpace) {
+                  setQuestionAnswer({ question: QuestionNames.ColorReason, answer: event.target.value });
+                }
+              }}
             />
           </label>
           <Button
-            label="NEXT"
+            label="Next"
             onClick={() => history.push(Routes.Questions.ColorLoveScale)}
             isDisabled={!answers[QuestionNames.ColorReason]}
           />
-        </>
+        </div>
       )}
       {isAtColorLoveScaleStep && (
-        <>
-          <label>
+        <div className="question-wrapper">
+          <label className="question-label">
             How much do you love color {answers[QuestionNames.FavoriteColor]} from 1-100?
             <input
               type="number"
@@ -110,7 +117,7 @@ const Questions = () => {
             />
           </label>
           <Button
-            label="NEXT"
+            label="Next"
             onClick={() => history.push(Routes.Result)}
             isDisabled={
               !answers[QuestionNames.ColorLoveScale] ||
@@ -118,7 +125,7 @@ const Questions = () => {
               answers[QuestionNames.ColorLoveScale] < 1
             }
           />
-        </>
+        </div>
       )}
     </form>
   );
